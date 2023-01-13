@@ -33,6 +33,11 @@
   display: inline-block;
   margin-right: 10px;
 }
+.weather canvas {
+  margin-top: 5px;
+  margin-right: 5px;
+  display: inline-block;
+}
 .weather .tempreture {
   font-weight: 400;
   color: rgb(33, 33, 33);
@@ -44,6 +49,9 @@
   font-size: 16px;
   font-weight: 400;
   position: relative;
-  top: 0;
+  top: -35px;
   line-height: 1;
+}
+.weatherTemperature a {
+  text-decoration: none;
 }
