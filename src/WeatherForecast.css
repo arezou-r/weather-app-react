@@ -1,0 +1,9 @@
+.weatherForecast {
+  text-align: center;
+}
+.weatherForecast-temp {
+}
+.weatherForecast-temp span {
+  opacity: 0.6;
+  margin: 5px;
+}
