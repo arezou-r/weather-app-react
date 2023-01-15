@@ -1,16 +1,25 @@
 import WeatherForecastDay from "./WeatherForecastDay";
 import "./WeatherForecast.css";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
   let [forecast, setForecast] = useState(null);
 
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.cityName]);
+
   function handleResponse(response) {
-    console.log(response.data.daily);
     setForecast(response.data.daily);
     setLoaded(true);
+  }
+
+  function load() {
+    let apiKey = "3794cado846aa024tdda83fba00effa9";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.cityName}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   if (loaded) {
@@ -24,16 +33,15 @@ export default function WeatherForecast(props) {
                   <WeatherForecastDay forecastData={dailyForecast} />
                 </div>
               );
+            } else {
+              return null;
             }
           })}
         </div>
       </div>
     );
   } else {
-    let apiKey = "3794cado846aa024tdda83fba00effa9";
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${props.cityName}&key=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-
+    load();
     return null;
   }
 }

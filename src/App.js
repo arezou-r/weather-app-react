@@ -7,7 +7,7 @@ function App() {
       <div className="container">
         <Weather defaultCity="Tehran" />
         <footer>
-          This project was coded by Arezou Ruohi and is
+          This project was coded by Arezou Rouhi and is
           <a
             href="https://github.com/arezou-r/weather-app-react"
             target="_blank"
